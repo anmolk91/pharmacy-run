@@ -36,6 +36,9 @@ class Graph:
         return self.djikstra_algo(source_index)
 
     def find_shortest_vertices_distance(self, distance_list, spt_set):
+        """
+            finds the vertex with the smallest distance from the current node
+        """
         min = math.inf
         min_index = -1
         for v in range(len(self.vertices)):
@@ -47,7 +50,9 @@ class Graph:
 
 
     def djikstra_algo(self, source_index):
-
+        """
+            an implementation of the Dijkstra's Algo for finding minimum spanning tree from a source node
+        """
         distance_list = [math.inf] * len(self.vertices)
         distance_list[source_index] = 0
         spt_set = [False] * len(self.vertices)
@@ -66,6 +71,9 @@ class Graph:
         return distance_list
 
     def generate_path(self, parent, source_index):
+        """
+            generates the path from the source index to the current node
+        """
         for i in range(len(parent)):
             if i != source_index:
                 path = []
@@ -78,6 +86,9 @@ class Graph:
 
 
     def create_path(self, parent, index, path_list):
+        """
+            recursively iterates to find the path from the node to source
+        """
         if parent[index] == -1:
             return
         path_list.append(self.vertices[parent[index]])
